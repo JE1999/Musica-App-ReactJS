@@ -29,20 +29,22 @@ function App() {
 
   }
 
-  //Consultar API de Informacion de cancion (Artista)
-  const consultarAPIInfo = async () =>{
-
-    if(artista){
-      const url = `https://theaudiodb.com/api/v1/json/1/search.php?s=${artista}`
-
-      const resultado = await Axios(url)
-
-      setInfo(resultado.data.artists[0])
-    }
-  }
-
   useEffect(() =>{
+  
+    //Consultar API de Informacion de cancion (Artista)
+    const consultarAPIInfo = async () =>{
+
+      if(artista){
+        const url = `https://theaudiodb.com/api/v1/json/1/search.php?s=${artista}`
+
+        const resultado = await Axios(url)
+
+        setInfo(resultado.data.artists[0])
+      }
+    }
+
     consultarAPIInfo()
+  
   }, [artista])
 
   return (
